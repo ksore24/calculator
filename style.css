@@ -1,0 +1,28 @@
+html, body{
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.display{
+    display: flex;
+    border: 1px solid black;
+    height: 15%;
+}
+
+.buttonRow1, .buttonRow2, .buttonRow3, .buttonRow4{
+    display: flex;
+    flex: 1;
+}
+
+button{
+    border: 1px solid black;
+    flex: 1;
+}
