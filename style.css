@@ -5,16 +5,19 @@ html, body{
 }
 
 .container{
-    display: flex;
-    flex-direction: column;
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.displayRow{
+    display: flex;
+    flex: 1;
 }
 
 .display{
-    display: flex;
-    border: 1px solid black;
-    height: 15%;
+    width: 75%;
 }
 
 .buttonRow1, .buttonRow2, .buttonRow3, .buttonRow4{
@@ -23,6 +26,5 @@ html, body{
 }
 
 button{
-    border: 1px solid black;
     flex: 1;
 }
