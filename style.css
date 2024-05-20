@@ -17,7 +17,11 @@ html, body{
 }
 
 .display{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 75%;
+    font-size: 300%;
 }
 
 .buttonRow1, .buttonRow2, .buttonRow3, .buttonRow4{
