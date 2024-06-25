@@ -2,10 +2,37 @@ let firstNumber = 0;
 let secondNumber = 0;
 let mathFunction = 0;
 let answer;
-let dotUsed;
+let dotCounter = 0;
+let dotUsed = false;
 
 const container = document.querySelector(".container");
 const display = document.querySelector(".display");
+
+document.addEventListener('keydown', function(event){
+    if(isFinite(event.key))
+        display.append(event.key);
+    else if(event.key == "Backspace")
+        backspaceFunction();
+    else if(event.key == "Enter" || event.key == "=")
+        enterFunction();
+    else if(event.key == "/")
+        divideFunction();
+    else if(event.key == "x")
+        multiplyFunction();
+    else if(event.key == "-")
+        subtractFunction();
+    else if(event.key == "/")
+        divideFunction();
+    else if (event.shiftKey && event.key == "+")
+        addFunction();
+    else if(event.key = "." && dotUsed == false)
+        dotFunction();
+    else if (event.key == "Escape")
+        clearFunction();
+})
+
+const buttonBackspace = document.querySelector(".buttonBackspace");
+buttonBackspace.addEventListener("click", backspaceFunction);
 
 const buttonEnter = document.querySelector(".buttonEnter");
 buttonEnter.addEventListener("click", enterFunction);
@@ -34,8 +61,26 @@ buttonDot.addEventListener("click", dotFunction);
 const buttonAdd = document.querySelector(".buttonAdd");
 buttonAdd.addEventListener("click", addFunction);
 
+function backspaceFunction(){
+    display.removeChild(display.lastChild);
+    dotUsed = false;
+    for(i = 0; i < display.textContent.length; i++)
+        {
+            if(display.textContent.charAt(i) == '.')
+                    dotUsed = true;
+        }
+    if(dotUsed)
+        {
+            buttonDot.setAttribute('disabled', 'disabled');
+        }
+    else
+        buttonDot.removeAttribute("disabled");
+}
 
 function enterFunction(){
+    if(mathFunction == 0)
+        return;
+
     secondNumber = display.textContent;
     clearFunction();
 
@@ -74,22 +119,18 @@ function enterFunction(){
         display.append(answer);
     }
 
+    dotUsed = false;
     for(i = 0; i < display.textContent.length; i++)
         {
             if(display.textContent.charAt(i) == '.')
-                {
                     dotUsed = true;
-                }
         }
-    
     if(dotUsed)
         {
             buttonDot.setAttribute('disabled', 'disabled');
         }
     else
         buttonDot.removeAttribute("disabled");
-
-    dotUsed = false;
 
     mathFunction = 0;
 }
@@ -122,26 +163,13 @@ function clearFunction(){
         display.removeChild(display.firstChild);
     }
     buttonDot.removeAttribute('disabled');
+    dotUsed = false;
 }
 
 function dotFunction(){
     display.append(".");
-    for(i = 0; i < display.textContent.length; i++)
-        {
-            if(display.textContent.charAt(i) == '.')
-                {
-                    dotUsed = true;
-                }
-        }
-    
-    if(dotUsed)
-        {
-            buttonDot.setAttribute('disabled', 'disabled');
-        }
-    else
-        buttonDot.removeAttribute("disabled");
-
-    dotUsed = false;
+    dotUsed = true;
+    buttonDot.setAttribute('disabled', 'disabled');
 }
 
 function addFunction(){

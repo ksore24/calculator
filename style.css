@@ -20,8 +20,9 @@ html, body{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 75%;
-    font-size: 300%;
+    width: 50%;
+    font-size: 200%;
+    font-weight: bold;
 }
 
 .buttonRow1, .buttonRow2, .buttonRow3, .buttonRow4{
@@ -31,4 +32,8 @@ html, body{
 
 button{
     flex: 1;
+}
+
+.buttonNumber{
+    background-color: orange;
 }
